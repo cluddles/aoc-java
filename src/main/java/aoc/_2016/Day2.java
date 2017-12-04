@@ -1,0 +1,89 @@
+package aoc._2016;
+
+import shared.Position;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+/**
+ * @author Dan Fielding
+ */
+public class Day2 {
+
+	private void parseFile(String filename) throws IOException {
+		// Read file into stream, try-with-resources
+		Position pos = new Position(1, 1);
+		List<String> lines = Files.readAllLines(Paths.get(filename));
+		for (String line : lines) {
+//			pos = parseThreeByThree(line, pos);
+//			System.out.println(pos + " -> " + threeByThreeButtonAt(pos));
+			pos = parseDiamond(line, pos);
+			System.out.println(pos + " -> " + diamondButtonAt(pos));
+		}
+	}
+
+	private Position parseThreeByThree(String line, Position startPos) {
+		int x = startPos.getX();
+		int y = startPos.getY();
+		for (int i = 0; i < line.length(); i++) {
+			char c = line.charAt(i);
+			switch (c) {
+				case 'U': y--; break;
+				case 'D': y++; break;
+				case 'L': x--; break;
+				case 'R': x++; break;
+			}
+			x = Math.max(0, Math.min(2, x));
+			y = Math.max(0, Math.min(2, y));
+		}
+		return new Position(x, y);
+	}
+
+	private int threeByThreeButtonAt(Position pos) {
+		return (pos.getY() * 3) + pos.getX() + 1;
+	}
+
+	private Position parseDiamond(String line, Position startPos) {
+		int x = startPos.getX();
+		int y = startPos.getY();
+		for (int i = 0; i < line.length(); i++) {
+			int newX = x;
+			int newY = y;
+			char c = line.charAt(i);
+			switch (c) {
+				case 'U': newY--; break;
+				case 'D': newY++; break;
+				case 'L': newX--; break;
+				case 'R': newX++; break;
+			}
+			if (Math.abs(2 - newX) + Math.abs(2 - newY) > 2) {
+				newX = x;
+				newY = y;
+			}
+			// Finally apply
+			x = newX;
+			y = newY;
+		}
+		return new Position(x, y);
+	}
+
+	private char diamondButtonAt(Position pos) {
+		String chars
+				= "  1  "
+				+ " 234 "
+				+ "56789"
+				+ " ABC "
+				+ "  D  ";
+		return chars.charAt(pos.getY() * 5 + pos.getX());
+	}
+
+	public static void main(String[] args) throws Exception {
+		String filename = "resources/day2input.txt";
+
+		Day2 worker = new Day2();
+		worker.parseFile(filename);
+	}
+
+}
