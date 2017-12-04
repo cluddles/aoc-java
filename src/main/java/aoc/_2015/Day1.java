@@ -1,8 +1,8 @@
 package aoc._2015;
 
+import shared.ResourceUtil;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -11,7 +11,7 @@ import java.util.List;
 public class Day1 {
 
 	public void run() throws IOException {
-		List<String> lines = Files.readAllLines(Paths.get("/home/danielf/Documents/extra/adventOfCode/2015/day1.input"));
+		List<String> lines = ResourceUtil.readAllLines("2015/day1.input");
 		String line = lines.get(0);
 		int floor = 0;
 		for (int i = 0; i < line.length(); i++) {

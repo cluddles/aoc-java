@@ -1,8 +1,8 @@
 package aoc._2016;
 
+import shared.ResourceUtil;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -82,7 +82,7 @@ public class Day8 {
 	}
 
 	private void parseFile(String filename) throws IOException {
-		List<String> lines = Files.readAllLines(Paths.get(filename));
+		List<String> lines = ResourceUtil.readAllLines(filename);
 
 		Display display = new Display(50, 6);
 		for (String line : lines) {
@@ -119,7 +119,7 @@ public class Day8 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day8input.txt";
+		String filename = "2016/day8.input";
 
 		Day8 worker = new Day8();
 		worker.parseFile(filename);

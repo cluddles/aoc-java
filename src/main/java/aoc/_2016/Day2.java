@@ -1,10 +1,9 @@
 package aoc._2016;
 
 import shared.Position;
+import shared.ResourceUtil;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ public class Day2 {
 	private void parseFile(String filename) throws IOException {
 		// Read file into stream, try-with-resources
 		Position pos = new Position(1, 1);
-		List<String> lines = Files.readAllLines(Paths.get(filename));
+		List<String> lines = ResourceUtil.readAllLines(filename);
 		for (String line : lines) {
 //			pos = parseThreeByThree(line, pos);
 //			System.out.println(pos + " -> " + threeByThreeButtonAt(pos));
@@ -80,7 +79,7 @@ public class Day2 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day2input.txt";
+		String filename = "2016/day2.input";
 
 		Day2 worker = new Day2();
 		worker.parseFile(filename);

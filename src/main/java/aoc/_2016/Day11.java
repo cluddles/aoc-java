@@ -2,10 +2,9 @@ package aoc._2016;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import shared.ResourceUtil;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -168,7 +167,7 @@ public class Day11 {
 	private final Map<String, Integer> nameLookup = new HashMap<>();
 
 	private void parseFile(String filename) throws IOException {
-		List<String> lines = Files.readAllLines(Paths.get(filename));
+		List<String> lines = ResourceUtil.readAllLines(filename);
 
 		State startState = new State();
 		for (int i = 0; i < lines.size(); i++) {
@@ -300,7 +299,7 @@ public class Day11 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day11input.txt";
+		String filename = "2016/day11.input";
 
 		Day11 worker = new Day11();
 		worker.parseFile(filename);

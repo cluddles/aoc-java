@@ -1,8 +1,8 @@
 package aoc._2016;
 
+import shared.ResourceUtil;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +15,7 @@ public class Day12 {
 
 	private void parseFile(String filename) throws IOException {
 		List<String> lines = new ArrayList<>();
-		lines.addAll(Files.readAllLines(Paths.get(filename)));
+		lines.addAll(ResourceUtil.readAllLines(filename));
 
 		int lineIndex = 0;
 		Map<String, Integer> registers = new HashMap<>();
@@ -77,7 +77,7 @@ public class Day12 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day12input.txt";
+		String filename = "2016/day12.input";
 
 		Day12 worker = new Day12();
 		worker.parseFile(filename);

@@ -2,10 +2,9 @@ package aoc._2016;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
+import shared.ResourceUtil;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +21,7 @@ public class Day3 {
 //		}
 
 		int validTriangles = 0;
-		List<String> lines = Files.readAllLines(Paths.get(filename));
+		List<String> lines = ResourceUtil.readAllLines(filename);
 		for (int i = 0; i < lines.size(); i += 3) {
 			List<Integer> line1 = parseLine(lines.get(i));
 			List<Integer> line2 = parseLine(lines.get(i+1));
@@ -72,7 +71,7 @@ public class Day3 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day3input.txt";
+		String filename = "2016/day3.input";
 
 		Day3 worker = new Day3();
 		worker.parseFile(filename);

@@ -1,10 +1,9 @@
 package aoc._2016;
 
 import shared.MapSort;
+import shared.ResourceUtil;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Map;
 public class Day6 {
 
 	private void parseFile(String filename) throws IOException {
-		List<String> lines = Files.readAllLines(Paths.get(filename));
+		List<String> lines = ResourceUtil.readAllLines(filename);
 		// Map of frequencies per column
 		List<Map<Character, Integer>> freqs = new ArrayList<>();
 		for (int i = 0; i < 8; i++){
@@ -47,7 +46,7 @@ public class Day6 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day6input.txt";
+		String filename = "2016/day6.input";
 
 		Day6 worker = new Day6();
 		worker.parseFile(filename);

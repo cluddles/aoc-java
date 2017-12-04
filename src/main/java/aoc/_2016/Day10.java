@@ -162,7 +162,7 @@ public class Day10 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day10input.txt";
+		String filename = "2016/day10.input";
 
 		Day10 worker = new Day10();
 		worker.parseFile(filename);

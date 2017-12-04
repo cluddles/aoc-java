@@ -1,10 +1,9 @@
 package aoc._2015;
 
 import com.google.common.base.Objects;
+import shared.ResourceUtil;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +39,7 @@ public class Day3 {
 	}
 
 	public void run() throws IOException {
-		List<String> lines = Files.readAllLines(Paths.get("/home/danielf/Documents/extra/adventOfCode/2015/day3.input"));
+		List<String> lines = ResourceUtil.readAllLines("/2015/day3.input");
 		String line = lines.get(0);
 
 		Set<Position> deliveries = new HashSet<>(line.length());

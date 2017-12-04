@@ -4,7 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 /**
- * Created by Cloud on 09/12/2016.
+ * @author Dan Fielding
  */
 public class Position {
 

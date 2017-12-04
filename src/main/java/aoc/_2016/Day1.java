@@ -2,10 +2,9 @@ package aoc._2016;
 
 import shared.Heading;
 import shared.Position;
+import shared.ResourceUtil;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +17,7 @@ import java.util.Set;
 public class Day1 {
 
 	private void parseFile(String filename) throws IOException {
-		List<String> lines = Files.readAllLines(Paths.get(filename));
+		List<String> lines = ResourceUtil.readAllLines(filename);
 		int blocks = parseLine(lines.get(0));
 		System.out.println("Blocks: " + blocks);
 	}
@@ -55,7 +54,7 @@ public class Day1 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day1input.txt";
+		String filename = "2016/day1.input";
 
 		Day1 worker = new Day1();
 		worker.parseFile(filename);

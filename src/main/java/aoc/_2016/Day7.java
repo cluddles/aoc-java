@@ -169,7 +169,7 @@ public class Day7 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day7input.txt";
+		String filename = "2016/day7.input";
 
 		Day7 worker = new Day7();
 		worker.parseFile(filename);

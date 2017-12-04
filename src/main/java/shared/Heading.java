@@ -1,7 +1,7 @@
 package shared;
 
 /**
- * Created by Cloud on 09/12/2016.
+ * @author Dan Fielding
  */
 public enum Heading {
 	N( 0, -1),

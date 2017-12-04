@@ -1,7 +1,7 @@
 package aoc._2015;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import shared.ResourceUtil;
+
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -18,8 +18,7 @@ public class Day5 {
 	static final Pattern NICE_PATTERN2 = Pattern.compile(".*(.).\\1.*");
 
 	public void run() throws Exception {
-		List<String> lines = Files.readAllLines(
-				Paths.get("/home/danielf/Documents/extra/adventOfCode/2015/day5.input"));
+		List<String> lines = ResourceUtil.readAllLines("2015/day5.input");
 		int nice = 0;
 		for (String line : lines) {
 //			if (NICE_PATTERN1.matcher(line).matches()

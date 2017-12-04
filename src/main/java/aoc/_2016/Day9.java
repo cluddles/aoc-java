@@ -1,8 +1,8 @@
 package aoc._2016;
 
+import shared.ResourceUtil;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Day9 {
 			= Pattern.compile("\\((\\d*)x(\\d*)\\)(.*)");
 
 	private void parseFile(String filename) throws IOException {
-		List<String> lines = Files.readAllLines(Paths.get(filename));
+		List<String> lines = ResourceUtil.readAllLines(filename);
 		// There should only be one hugenormous line anyway
 		String toParse = lines.get(0);
 		//simpleDecompress(toParse);
@@ -119,7 +119,7 @@ public class Day9 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String filename = "resources/day9input.txt";
+		String filename = "2016/day9.input";
 
 		Day9 worker = new Day9();
 		worker.parseFile(filename);
