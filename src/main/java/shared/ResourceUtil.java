@@ -31,4 +31,8 @@ public class ResourceUtil {
 		}
 	}
 
+	public static String readAsString(String name) throws IOException {
+		return readAllLines(name).stream().collect(Collectors.joining("\n"));
+	}
+
 }
