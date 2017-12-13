@@ -1,12 +1,13 @@
 package aoc._2016;
 
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
-import shared.ResourceUtil;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableList;
+
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding

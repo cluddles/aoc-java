@@ -1,10 +1,10 @@
 package aoc._2016;
 
-import com.google.common.io.BaseEncoding;
-
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import com.google.common.io.BaseEncoding;
 
 /**
  * @author Dan Fielding

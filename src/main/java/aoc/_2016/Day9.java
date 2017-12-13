@@ -1,13 +1,13 @@
 package aoc._2016;
 
-import shared.ResourceUtil;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding

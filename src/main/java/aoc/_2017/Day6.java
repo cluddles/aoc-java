@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 import com.google.common.collect.ImmutableList;
 
-import javafx.util.Pair;
 import shared.ResourceUtil;
 import shared.Test;
 

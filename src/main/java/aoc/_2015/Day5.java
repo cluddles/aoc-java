@@ -1,9 +1,9 @@
 package aoc._2015;
 
-import shared.ResourceUtil;
-
 import java.util.List;
 import java.util.regex.Pattern;
+
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding

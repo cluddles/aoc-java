@@ -1,13 +1,13 @@
 package aoc._2016;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
-import com.google.common.collect.ImmutableList;
-
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+import com.google.common.collect.ImmutableList;
 
 /**
  * @author Dan Fielding

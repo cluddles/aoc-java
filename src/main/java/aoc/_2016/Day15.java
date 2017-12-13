@@ -1,7 +1,5 @@
 package aoc._2016;
 
-import com.google.common.base.MoreObjects;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.base.MoreObjects;
 
 /**
  * @author Dan Fielding

@@ -1,11 +1,11 @@
 package aoc._2017;
 
-import shared.Test;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
+
+import shared.Test;
 
 /**
  * @author Dan Fielding

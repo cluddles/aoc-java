@@ -1,13 +1,22 @@
 package aoc._2016;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
-import shared.ResourceUtil;
-
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding

@@ -1,9 +1,9 @@
 package aoc._2015;
 
-import com.google.common.io.BaseEncoding;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import com.google.common.io.BaseEncoding;
 
 /**
  * @author Dan Fielding

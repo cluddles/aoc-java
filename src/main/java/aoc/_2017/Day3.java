@@ -1,11 +1,11 @@
 package aoc._2017;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import shared.Heading;
 import shared.Position;
 import shared.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Dan Fielding

@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 
 import shared.ResourceUtil;
 import shared.Test;
+import shared.Timer;
 
 /**
  * @author Dan Fielding
@@ -426,9 +427,11 @@ public class Day13 {
 		Day13 day = new Day13();
 		day.examples();
 
+		Timer.start();
 		List<String> input = ResourceUtil.readAllLines("2017/day13.input");
 		System.out.println(day.cost (input));
 		System.out.println(day.delay(input));
+		System.out.println(Timer.end());
 	}
 
 }

@@ -1,13 +1,13 @@
 package aoc._2016;
 
-import shared.MapSort;
-import shared.ResourceUtil;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import shared.MapSort;
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding

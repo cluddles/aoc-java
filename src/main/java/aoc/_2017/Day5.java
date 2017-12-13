@@ -1,14 +1,14 @@
 package aoc._2017;
 
-import com.google.common.collect.ImmutableList;
-import shared.ResourceUtil;
-import shared.Test;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import com.google.common.collect.ImmutableList;
+
+import shared.ResourceUtil;
+import shared.Test;
 
 /**
  * @author Dan Fielding

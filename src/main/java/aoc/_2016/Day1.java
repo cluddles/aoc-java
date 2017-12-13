@@ -1,13 +1,13 @@
 package aoc._2016;
 
-import shared.Heading;
-import shared.Position;
-import shared.ResourceUtil;
-
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import shared.Heading;
+import shared.Position;
+import shared.ResourceUtil;
 
 /**
  * http://adventofcode.com/2016

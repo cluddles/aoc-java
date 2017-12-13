@@ -1,12 +1,13 @@
 package aoc._2015;
 
-import com.google.common.base.Objects;
-import shared.ResourceUtil;
-
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import com.google.common.base.Objects;
+
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding

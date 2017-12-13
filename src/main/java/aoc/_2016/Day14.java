@@ -1,7 +1,5 @@
 package aoc._2016;
 
-import com.google.common.io.BaseEncoding;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -10,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.io.BaseEncoding;
 
 /**
  * @author Dan Fielding

@@ -1,10 +1,10 @@
 package aoc._2016;
 
-import shared.Position;
-import shared.ResourceUtil;
-
 import java.io.IOException;
 import java.util.List;
+
+import shared.Position;
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding

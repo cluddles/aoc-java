@@ -1,9 +1,9 @@
 package aoc._2015;
 
-import shared.ResourceUtil;
-
 import java.io.IOException;
 import java.util.List;
+
+import shared.ResourceUtil;
 
 /**
  * @author Dan Fielding
