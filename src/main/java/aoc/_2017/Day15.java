@@ -1,6 +1,9 @@
 package aoc._2017;
 
-import java.math.BigInteger;
+import java.util.Iterator;
+import java.util.stream.Stream;
+
+import com.google.common.collect.Streams;
 
 import shared.Test;
 
@@ -140,20 +143,36 @@ public class Day15 {
 
 	private static final int DIVISOR = 2147483647;
 
-	class Generator {
+	class Generator implements Iterator<Integer> {
 		long current;
-		int factor;
-		int multiple;
+		final int factor;
+		final int multiple;
+		public Generator(int current, int factor) {
+			this(current, factor, -1);
+		}
 		public Generator(int current, int factor, int multiple) {
 			this.current  = current;
 			this.factor   = factor;
 			this.multiple = multiple;
 		}
-		public int next() {
+		@Override
+		public boolean hasNext() {
+			return true;
+		}
+		@Override
+		public Integer next() {
 			do {
 				current = (current * factor) % DIVISOR;
 			} while (multiple != -1 && current % multiple != 0);
 			return (int) current;
+		}
+	}
+
+	class IntPair {
+		final int a, b;
+		IntPair(int a, int b) {
+			this.a = a;
+			this.b = b;
 		}
 	}
 
@@ -162,17 +181,17 @@ public class Day15 {
 	}
 
 	public int totalPairs(Generator a, Generator b, int runs) {
-		int result = 0;
-		for (int i = 0; i < runs; i++) {
-			if (match(a.next(), b.next())) result++;
-		}
-		return result;
+		Stream<IntPair> zipped = Streams.zip(Streams.stream(a), Streams.stream(b), IntPair::new);
+		return (int) zipped
+				.limit(runs)
+				.filter(pair -> match(pair.a, pair.b))
+				.count();
 	}
 
 	public int partOne(int genA, int genB) {
 		return totalPairs(
-				new Generator(genA, 16807, -1),
-				new Generator(genB, 48271, -1),
+				new Generator(genA, 16807),
+				new Generator(genB, 48271),
 				40_000_000);
 	}
 
@@ -190,7 +209,7 @@ public class Day15 {
 		Test.assertEqual(match(1744312007,  137874439), false);
 		Test.assertEqual(match(1352636452,  285222916), false);
 
-//		Test.assertEqual(totalPairs(65, 8921), 588);
+//		Test.assertEqual(partOne(65, 8921), 588);
 
 		Test.assertEqual(partTwo(65, 8921), 309);
 	}
@@ -199,7 +218,7 @@ public class Day15 {
 		Day15 day = new Day15();
 		day.examples();
 
-//		System.out.println(day.totalPairs(618, 814));
+//		System.out.println(day.partOne(618, 814));
 
 		System.out.println(day.partTwo(618, 814));
 	}

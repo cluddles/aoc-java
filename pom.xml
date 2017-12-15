@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <guavaVersion>20.0</guavaVersion>
+        <guavaVersion>21.0</guavaVersion>
     </properties>
 
     <dependencies>
