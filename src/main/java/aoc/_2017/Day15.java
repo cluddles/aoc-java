@@ -138,27 +138,27 @@ public class Day15 {
 
 	 */
 
-	static final BigInteger DIVISOR = BigInteger.valueOf(2147483647);
+	private static final int DIVISOR = 2147483647;
 
 	class Generator {
-		BigInteger current;
-		BigInteger factor;
-		BigInteger multiple;
+		long current;
+		int factor;
+		int multiple;
 		public Generator(int current, int factor, int multiple) {
-			this.current = BigInteger.valueOf(current);
-			this.factor  = BigInteger.valueOf(factor);
-			if (multiple != -1) this.multiple = BigInteger.valueOf(multiple);
+			this.current  = current;
+			this.factor   = factor;
+			this.multiple = multiple;
 		}
-		public BigInteger next() {
+		public int next() {
 			do {
-				current = current.multiply(factor).remainder(DIVISOR);
-			} while (multiple == null || !current.remainder(multiple).equals(BigInteger.ZERO));
-			return current;
+				current = (current * factor) % DIVISOR;
+			} while (multiple != -1 && current % multiple != 0);
+			return (int) current;
 		}
 	}
 
-	public boolean match(BigInteger a, BigInteger b) {
-		return (a.intValue() & 0xffff) == (b.intValue() & 0xffff);
+	public boolean match(int a, int b) {
+		return (a & 0xffff) == (b & 0xffff);
 	}
 
 	public int totalPairs(Generator a, Generator b, int runs) {
@@ -184,11 +184,11 @@ public class Day15 {
 	}
 
 	public void examples() {
-		Test.assertEqual(match(BigInteger.valueOf(1092455), BigInteger.valueOf(430625591)), false);
-		Test.assertEqual(match(BigInteger.valueOf(1181022009), BigInteger.valueOf(1233683848)), false);
-		Test.assertEqual(match(BigInteger.valueOf(245556042), BigInteger.valueOf(1431495498)), true);
-		Test.assertEqual(match(BigInteger.valueOf(1744312007), BigInteger.valueOf(137874439)), false);
-		Test.assertEqual(match(BigInteger.valueOf(1352636452), BigInteger.valueOf(285222916)), false);
+		Test.assertEqual(match(   1092455,  430625591), false);
+		Test.assertEqual(match(1181022009, 1233683848), false);
+		Test.assertEqual(match( 245556042, 1431495498), true);
+		Test.assertEqual(match(1744312007,  137874439), false);
+		Test.assertEqual(match(1352636452,  285222916), false);
 
 //		Test.assertEqual(totalPairs(65, 8921), 588);
 
