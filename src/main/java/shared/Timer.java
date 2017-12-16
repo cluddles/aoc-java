@@ -11,8 +11,12 @@ public class Timer {
 		startTime = System.currentTimeMillis();
 	}
 
-	public static String end() {
-		return "Done: " + (System.currentTimeMillis() - startTime) + "ms";
+	public static long end() {
+		return (System.currentTimeMillis() - startTime);
+	}
+
+	public static void endMessage() {
+		System.out.println("Done in " + end() + "ms");
 	}
 
 }
