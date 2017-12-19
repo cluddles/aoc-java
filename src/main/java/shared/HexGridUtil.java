@@ -8,7 +8,7 @@ package shared;
  */
 public class HexGridUtil {
 
-	public static int distanceBetween(Position first, Position second) {
+	public static int distanceBetween(IntVector2 first, IntVector2 second) {
 		int u1 = first.x;
 		int u2 = second.x;
 		int v1 = first.y;

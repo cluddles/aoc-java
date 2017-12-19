@@ -3,7 +3,7 @@ package aoc._2016;
 import java.io.IOException;
 import java.util.List;
 
-import shared.Position;
+import shared.IntVector2;
 import shared.ResourceUtil;
 
 /**
@@ -13,7 +13,7 @@ public class Day2 {
 
 	private void parseFile(String filename) throws IOException {
 		// Read file into stream, try-with-resources
-		Position pos = new Position(1, 1);
+		IntVector2 pos = new IntVector2(1, 1);
 		List<String> lines = ResourceUtil.readAllLines(filename);
 		for (String line : lines) {
 //			pos = parseThreeByThree(line, pos);
@@ -23,7 +23,7 @@ public class Day2 {
 		}
 	}
 
-	private Position parseThreeByThree(String line, Position startPos) {
+	private IntVector2 parseThreeByThree(String line, IntVector2 startPos) {
 		int x = startPos.getX();
 		int y = startPos.getY();
 		for (int i = 0; i < line.length(); i++) {
@@ -37,14 +37,14 @@ public class Day2 {
 			x = Math.max(0, Math.min(2, x));
 			y = Math.max(0, Math.min(2, y));
 		}
-		return new Position(x, y);
+		return new IntVector2(x, y);
 	}
 
-	private int threeByThreeButtonAt(Position pos) {
+	private int threeByThreeButtonAt(IntVector2 pos) {
 		return (pos.getY() * 3) + pos.getX() + 1;
 	}
 
-	private Position parseDiamond(String line, Position startPos) {
+	private IntVector2 parseDiamond(String line, IntVector2 startPos) {
 		int x = startPos.getX();
 		int y = startPos.getY();
 		for (int i = 0; i < line.length(); i++) {
@@ -65,10 +65,10 @@ public class Day2 {
 			x = newX;
 			y = newY;
 		}
-		return new Position(x, y);
+		return new IntVector2(x, y);
 	}
 
-	private char diamondButtonAt(Position pos) {
+	private char diamondButtonAt(IntVector2 pos) {
 		String chars
 				= "  1  "
 				+ " 234 "

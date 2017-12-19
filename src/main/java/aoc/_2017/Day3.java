@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import shared.Heading;
-import shared.Position;
+import shared.IntVector2;
 import shared.Test;
 
 /**
@@ -39,19 +39,19 @@ public class Day3 {
 	}
 
 	public int evalPart2(int input, int stopAfter) {
-		Map<Position, Integer> map = new HashMap<>();
+		Map<IntVector2, Integer> map = new HashMap<>();
 		int i = 0;
 		Heading dir = Heading.E;
 		int len = 0;
 		int maxLen = 1;
-		Position current = new Position(0, 0);
+		IntVector2 current = new IntVector2(0, 0);
 		int lastVal = 0;
 		// right, up, left left, down down, right right right, ...
 		while (i < input || (input == 0 && lastVal <= stopAfter)) {
 			lastVal = Math.max(sumOfSurrounding(map, current), 1);
 			map.put(current, lastVal);
 
-			current = current.add(dir.getPos());
+			current = current.add(dir.getStep());
 			len++;
 			if (len == maxLen) {
 				len = 0;
@@ -64,12 +64,12 @@ public class Day3 {
 		return lastVal;
 	}
 
-	public int sumOfSurrounding(Map<Position, Integer> map, Position current) {
+	public int sumOfSurrounding(Map<IntVector2, Integer> map, IntVector2 current) {
 		int result = 0;
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
 				if (i == 0 && j == 0) continue;
-				Position pos = current.add(new Position(i, j));
+				IntVector2 pos = current.add(new IntVector2(i, j));
 				Integer val = map.get(pos);
 				result += (val == null? 0 : val);
 			}

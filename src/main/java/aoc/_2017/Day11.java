@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import shared.HexGridUtil;
 import shared.HexHeading;
-import shared.Position;
+import shared.IntVector2;
 import shared.ResourceUtil;
 import shared.Test;
 
@@ -66,8 +66,8 @@ public class Day11 {
 	}
 
 	public Result distance(String input) {
-		Position origin = new Position(0, 0);
-		Position pos = origin;
+		IntVector2 origin = new IntVector2(0, 0);
+		IntVector2 pos = origin;
 		List<HexHeading> moves = Arrays.stream(input.split(","))
 				.map(HexHeading::fromString)
 				.collect(Collectors.toList());

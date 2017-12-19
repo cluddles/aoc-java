@@ -5,18 +5,18 @@ package shared;
  */
 public enum HexHeading {
 	// Delta for even- and odd-columns.
-	N   (new Position( 0, -1), new Position( 0, -1)),
-	NE  (new Position( 1, -1), new Position( 1,  0)),
-	SE  (new Position( 1,  0), new Position( 1,  1)),
-	S   (new Position( 0,  1), new Position( 0,  1)),
-	SW  (new Position(-1,  0), new Position(-1,  1)),
-	NW  (new Position(-1, -1), new Position(-1,  0)),
+	N   (new IntVector2( 0, -1), new IntVector2( 0, -1)),
+	NE  (new IntVector2( 1, -1), new IntVector2( 1,  0)),
+	SE  (new IntVector2( 1,  0), new IntVector2( 1,  1)),
+	S   (new IntVector2( 0,  1), new IntVector2( 0,  1)),
+	SW  (new IntVector2(-1,  0), new IntVector2(-1,  1)),
+	NW  (new IntVector2(-1, -1), new IntVector2(-1,  0)),
 	;
 
-	private final Position deltaEven;
-	private final Position deltaOdd;
+	private final IntVector2 deltaEven;
+	private final IntVector2 deltaOdd;
 
-	HexHeading(Position deltaEven, Position deltaOdd) {
+	HexHeading(IntVector2 deltaEven, IntVector2 deltaOdd) {
 		this.deltaEven = deltaEven;
 		this.deltaOdd  = deltaOdd;
 	}
@@ -28,7 +28,7 @@ public enum HexHeading {
 		return null;
 	}
 
-	public Position getDelta(Position pos) {
+	public IntVector2 getDelta(IntVector2 pos) {
 		return ((pos.x & 1) == 0)? deltaEven : deltaOdd;
 	}
 

@@ -10,10 +10,10 @@ public enum Heading {
 	W(-1,  0),
 	;
 
-	private final Position pos;
+	private final IntVector2 step;
 
 	Heading(int x, int y) {
-		pos = new Position(x, y);
+		step = new IntVector2(x, y);
 	}
 
 	public Heading turnLeft() {
@@ -36,16 +36,26 @@ public enum Heading {
 		throw new AssertionError("Unhandled heading: " + this);
 	}
 
+	public Heading opposite() {
+		switch (this) {
+			case N: return S;
+			case S: return N;
+			case E: return W;
+			case W: return E;
+		}
+		throw new AssertionError("Unhandled heading: " + this);
+	}
+
 	public int getX() {
-		return pos.x;
+		return step.x;
 	}
 
 	public int getY() {
-		return pos.y;
+		return step.y;
 	}
 
-	public Position getPos() {
-		return pos;
+	public IntVector2 getStep() {
+		return step;
 	}
 
 }

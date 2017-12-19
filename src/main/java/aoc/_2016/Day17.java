@@ -13,7 +13,7 @@ import com.google.common.collect.TreeMultimap;
 
 import shared.Heading;
 import shared.Md5;
-import shared.Position;
+import shared.IntVector2;
 
 /**
  * @author Dan Fielding
@@ -21,10 +21,10 @@ import shared.Position;
 public class Day17 {
 
 	private class State {
-		final Position pos;
+		final IntVector2 pos;
 		final String moves;
 
-		public State(Position pos, String moves) {
+		public State(IntVector2 pos, String moves) {
 			this.pos = pos;
 			this.moves = moves;
 		}
@@ -48,7 +48,7 @@ public class Day17 {
 					.toString();
 		}
 
-		public int f(Position goal) {
+		public int f(IntVector2 goal) {
 			return g() + pos.manhattanDistance(goal);
 		}
 
@@ -83,8 +83,8 @@ public class Day17 {
 	};
 
 	public void run(String seed) {
-		Position start = new Position(0, 0);
-		Position goal = new Position(3, 3);
+		IntVector2 start = new IntVector2(0, 0);
+		IntVector2 goal = new IntVector2(3, 3);
 		Multimap<Integer, State> fStates = TreeMultimap.create(
 				Comparator.comparingInt(Integer::intValue),
 				Ordering.arbitrary()
@@ -114,7 +114,7 @@ public class Day17 {
 						// Open door in dir: u,d,l,r
 						Move move = MOVES[i];
 //						System.out.println("Open: " + move.name);
-						Position newPos = state.pos.add(move.heading.getPos());
+						IntVector2 newPos = state.pos.add(move.heading.getStep());
 						if (isOutOfBounds(newPos)) {
 //							System.out.println("Out of bounds");
 							continue;
@@ -144,7 +144,7 @@ public class Day17 {
 		System.out.println(worstState.moves.length() + " : " + worstState);
 	}
 
-	private boolean isOutOfBounds(Position newPos) {
+	private boolean isOutOfBounds(IntVector2 newPos) {
 		return (newPos.x < 0 || newPos.y < 0 || newPos.x > 3 || newPos.y > 3);
 	}
 

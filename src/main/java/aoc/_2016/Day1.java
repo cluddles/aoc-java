@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import shared.Heading;
-import shared.Position;
+import shared.IntVector2;
 import shared.ResourceUtil;
 
 /**
@@ -22,15 +22,15 @@ public class Day1 {
 		System.out.println("Blocks: " + blocks);
 	}
 
-	private int manhattanDistance(Position pos) {
+	private int manhattanDistance(IntVector2 pos) {
 		return Math.abs(pos.getX()) + Math.abs(pos.getY());
 	}
 
 	private int parseLine(String line) {
 		String[] directions = line.split(", ");
 		Heading heading = Heading.N;
-		Position pos = new Position(0, 0);
-		Set<Position> previousPos = new HashSet<Position>();
+		IntVector2 pos = new IntVector2(0, 0);
+		Set<IntVector2> previousPos = new HashSet<IntVector2>();
 		for (String direction : directions) {
 			char dir = direction.charAt(0);
 			int dist = Integer.parseInt(direction.substring(1));
@@ -47,7 +47,7 @@ public class Day1 {
 					System.out.println("Been here before: " + pos + ", " + manhattanDistance(pos));
 				}
 				previousPos.add(pos);
-				pos = pos.add(new Position(heading.getX(), heading.getY()));
+				pos = pos.add(new IntVector2(heading.getX(), heading.getY()));
 			}
 		}
 		return manhattanDistance(pos);
