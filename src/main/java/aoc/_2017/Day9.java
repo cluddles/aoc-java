@@ -233,7 +233,7 @@ public class Day9 {
 		Day9 day = new Day9();
 		day.examples();
 
-		String input = ResourceUtil.readAsString("2017/day9.input");
+		String input = ResourceUtil.readString("2017/day9.input");
 		day.main(input);
 	}
 }

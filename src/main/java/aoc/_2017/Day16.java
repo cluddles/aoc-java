@@ -119,7 +119,7 @@ public class Day16 {
 
 		String start = "abcdefghijklmnop";
 		List<String> input = Arrays.asList(
-				ResourceUtil.readAsString("2017/day16.input").split(","));
+				ResourceUtil.readString("2017/day16.input").split(","));
 
 		// Part 1
 		Timer.start();

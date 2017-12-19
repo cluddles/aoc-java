@@ -260,7 +260,7 @@ public class Day10 {
 		Day10 day = new Day10();
 		day.examples();
 
-		String input = ResourceUtil.readAsString("2017/day10.input");
+		String input = ResourceUtil.readString("2017/day10.input");
 		List<Integer> result = day.partOne(256, input);
 		System.out.println(result);
 		System.out.println(result.get(0) * result.get(1));

@@ -11,7 +11,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.TreeMultimap;
 
-import shared.Heading;
+import shared.Direction;
 import shared.Md5;
 import shared.IntVector2;
 
@@ -58,28 +58,28 @@ public class Day17 {
 	}
 
 	private static class Move {
-		final Heading heading;
+		final Direction direction;
 		final String name;
 
-		public Move(Heading heading, String name) {
-			this.heading = heading;
+		public Move(Direction direction, String name) {
+			this.direction = direction;
 			this.name = name;
 		}
 
 		@Override
 		public String toString() {
 			return MoreObjects.toStringHelper(this)
-					.add("heading", heading)
+					.add("direction", direction)
 					.add("name", name)
 					.toString();
 		}
 	}
 
 	private static final Move[] MOVES = new Move[] {
-			new Move(Heading.N, "U"),
-			new Move(Heading.S, "D"),
-			new Move(Heading.W, "L"),
-			new Move(Heading.E, "R"),
+			new Move(Direction.N, "U"),
+			new Move(Direction.S, "D"),
+			new Move(Direction.W, "L"),
+			new Move(Direction.E, "R"),
 	};
 
 	public void run(String seed) {
@@ -114,7 +114,7 @@ public class Day17 {
 						// Open door in dir: u,d,l,r
 						Move move = MOVES[i];
 //						System.out.println("Open: " + move.name);
-						IntVector2 newPos = state.pos.add(move.heading.getStep());
+						IntVector2 newPos = state.pos.add(move.direction.getStep());
 						if (isOutOfBounds(newPos)) {
 //							System.out.println("Out of bounds");
 							continue;

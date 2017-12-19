@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import shared.Heading;
+import shared.Direction;
 import shared.IntVector2;
 import shared.ResourceUtil;
 
@@ -28,7 +28,7 @@ public class Day1 {
 
 	private int parseLine(String line) {
 		String[] directions = line.split(", ");
-		Heading heading = Heading.N;
+		Direction heading = Direction.N;
 		IntVector2 pos = new IntVector2(0, 0);
 		Set<IntVector2> previousPos = new HashSet<IntVector2>();
 		for (String direction : directions) {

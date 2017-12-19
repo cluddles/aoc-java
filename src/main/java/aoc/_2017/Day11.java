@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import shared.HexGridUtil;
-import shared.HexHeading;
-import shared.IntVector2;
+import shared.HexUtil;
+import shared.HexDirection;
+import shared.IntVector3;
 import shared.ResourceUtil;
 import shared.Test;
 
@@ -66,18 +66,18 @@ public class Day11 {
 	}
 
 	public Result distance(String input) {
-		IntVector2 origin = new IntVector2(0, 0);
-		IntVector2 pos = origin;
-		List<HexHeading> moves = Arrays.stream(input.split(","))
-				.map(HexHeading::fromString)
+		List<HexDirection> moves = Arrays.stream(input.split(","))
+				.map(dir -> HexDirection.valueOf(dir.toUpperCase()))
 				.collect(Collectors.toList());
 
+		IntVector3 origin  = IntVector3.ZERO;
+		IntVector3 pos     = origin;
 		int maxDist = 0;
-		for (HexHeading move : moves) {
-			pos = pos.add(move.getDelta(pos));
-			maxDist = Math.max(maxDist, HexGridUtil.distanceBetween(origin, pos));
+		for (HexDirection move : moves) {
+			pos = pos.add(move.getStep());
+			maxDist = Math.max(maxDist, HexUtil.distance(origin, pos));
 		}
-		return new Result(HexGridUtil.distanceBetween(origin, pos), maxDist);
+		return new Result(HexUtil.distance(origin, pos), maxDist);
 	}
 
 	public void examples() {
@@ -93,7 +93,7 @@ public class Day11 {
 		Day11 day = new Day11();
 		day.examples();
 
-		String input = ResourceUtil.readAsString("2017/day11.input");
+		String input = ResourceUtil.readString("2017/day11.input");
 		Result result = day.distance(input);
 		System.out.println(result.finalDist);
 		System.out.println(result.maxDist);

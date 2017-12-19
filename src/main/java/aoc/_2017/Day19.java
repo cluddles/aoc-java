@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
+import shared.Direction;
 import shared.Grid;
-import shared.Heading;
 import shared.IntVector2;
 import shared.ResourceUtil;
 import shared.Test;
@@ -125,7 +125,7 @@ How many steps does the packet need to go?
 	public Result path(List<String> input) {
 		Grid<Node> grid = createGrid(input);
 
-		Heading dir = Heading.S;
+		Direction dir = Direction.S;
 		// Find start pos
 		IntVector2 pos = null;
 		for (int i = 0; i < grid.getNumCells().x; i++) {

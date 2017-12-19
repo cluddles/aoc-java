@@ -6,32 +6,33 @@ import com.google.common.base.Objects;
 /**
  * @author Dan Fielding
  */
-public class IntVector2 {
+public class IntVector3 {
 
-	public static final IntVector2 ZERO = new IntVector2(0, 0);
+	public static final IntVector3 ZERO = new IntVector3(0, 0, 0);
 
-	public final int x, y;
+	public final int x, y, z;
 
-	public IntVector2(int x, int y) {
+	public IntVector3(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
+		this.z = z;
 	}
 
-	public IntVector2 add(IntVector2 other) {
-		return new IntVector2(x + other.x, y + other.y);
+	public IntVector3 add(IntVector3 other) {
+		return new IntVector3(x + other.x, y + other.y, z + other.z);
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		IntVector2 position = (IntVector2) o;
-		return x == position.x && y == position.y;
+		IntVector3 position = (IntVector3) o;
+		return x == position.x && y == position.y && z == position.z;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(x, y);
+		return Objects.hashCode(x, y, z);
 	}
 
 	@Override
@@ -39,6 +40,7 @@ public class IntVector2 {
 		return MoreObjects.toStringHelper(this)
 				.add("x", x)
 				.add("y", y)
+				.add("z", z)
 				.toString();
 	}
 
@@ -50,8 +52,8 @@ public class IntVector2 {
 		return y;
 	}
 
-	public int manhattanDistance(IntVector2 other) {
-		return Math.abs(x - other.x) + Math.abs(y - other.y);
+	public int getZ() {
+		return z;
 	}
 
 }

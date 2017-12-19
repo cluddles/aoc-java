@@ -3,7 +3,7 @@ package aoc._2017;
 import java.util.HashMap;
 import java.util.Map;
 
-import shared.Heading;
+import shared.Direction;
 import shared.IntVector2;
 import shared.Test;
 
@@ -41,7 +41,7 @@ public class Day3 {
 	public int evalPart2(int input, int stopAfter) {
 		Map<IntVector2, Integer> map = new HashMap<>();
 		int i = 0;
-		Heading dir = Heading.E;
+		Direction dir = Direction.E;
 		int len = 0;
 		int maxLen = 1;
 		IntVector2 current = new IntVector2(0, 0);
@@ -56,7 +56,7 @@ public class Day3 {
 			if (len == maxLen) {
 				len = 0;
 				dir = dir.turnLeft();
-				if (dir == Heading.E || dir == Heading.W) maxLen++;
+				if (dir == Direction.E || dir == Direction.W) maxLen++;
 			}
 
 			i++;
