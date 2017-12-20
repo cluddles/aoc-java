@@ -18,8 +18,22 @@ public class IntVector3 {
 		this.z = z;
 	}
 
+	public static IntVector3 fromString(String str) {
+		String[] parts = str.split(",");
+		if (parts.length != 3) {
+			throw new IllegalArgumentException("Expected 3 comma-separated numbers");
+		}
+		return new IntVector3(
+				Integer.valueOf(parts[0].trim()),
+				Integer.valueOf(parts[1].trim()),
+				Integer.valueOf(parts[2].trim()));
+	}
+
 	public IntVector3 add(IntVector3 other) {
 		return new IntVector3(x + other.x, y + other.y, z + other.z);
+	}
+	public IntVector3 multiply(int scalar) {
+		return new IntVector3(x * scalar, y * scalar, z * scalar);
 	}
 
 	@Override
@@ -54,6 +68,10 @@ public class IntVector3 {
 
 	public int getZ() {
 		return z;
+	}
+
+	public int manhattanDistance(IntVector3 other) {
+		return Math.abs(x - other.x) + Math.abs(y - other.y) + Math.abs(z - other.z);
 	}
 
 }
