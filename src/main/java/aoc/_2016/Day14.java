@@ -58,10 +58,14 @@ public class Day14 {
 			return result;
 		}
 
-		result = seed + val;
-		for (int i = 0; i < 2017; i++) {
-			result = hash(result);
-		}
+		// Part 1
+		result = hash(seed + val);
+
+		// Part 2
+//		result = seed + val;
+//		for (int i = 0; i < 2017; i++) {
+//			result = hash(result);
+//		}
 		allHashes.put(val, result);
 		return result;
 	}
@@ -84,8 +88,9 @@ public class Day14 {
 //	}
 
 	public static void main(String[] args) throws Exception {
-		String input = "cuanljph";
-		// String input = "abc";
+//		String input = "cuanljph";
+//		String input = "abc";
+		String input = "ngcjuoqr";
 		Day14 worker = new Day14(input);
 		worker.run(64);
 	}
