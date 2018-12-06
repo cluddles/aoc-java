@@ -128,20 +128,20 @@ What is the first frequency your device reaches twice?
 
 		// Part 1
 		// Examples
-		Test.assertEqual(solver.evalPart1(toInput("+1, -2, +3, +1")), 3);
-		Test.assertEqual(solver.evalPart1(toInput("+1, +1, +1")), 3);
-		Test.assertEqual(solver.evalPart1(toInput("+1, +1, -2")), 0);
-		Test.assertEqual(solver.evalPart1(toInput("-1, -2, -3")), -6);
+		Test.check(solver.evalPart1(toInput("+1, -2, +3, +1")), 3);
+		Test.check(solver.evalPart1(toInput("+1, +1, +1")), 3);
+		Test.check(solver.evalPart1(toInput("+1, +1, -2")), 0);
+		Test.check(solver.evalPart1(toInput("-1, -2, -3")), -6);
 		// Vs Input
 		System.out.println(solver.evalPart1(lines));
 
 		// Part 2
 		// Examples
-		Test.assertEqual(solver.evalPart2(toInput("+1, -2, +3, +1")), 2);
-		Test.assertEqual(solver.evalPart2(toInput("+1, -1")), 0);
-		Test.assertEqual(solver.evalPart2(toInput("+3, +3, +4, -2, -4")), 10);
-		Test.assertEqual(solver.evalPart2(toInput("-6, +3, +8, +5, -6")), 5);
-		Test.assertEqual(solver.evalPart2(toInput("+7, +7, -2, -7, -4")), 14);
+		Test.check(solver.evalPart2(toInput("+1, -2, +3, +1")), 2);
+		Test.check(solver.evalPart2(toInput("+1, -1")), 0);
+		Test.check(solver.evalPart2(toInput("+3, +3, +4, -2, -4")), 10);
+		Test.check(solver.evalPart2(toInput("-6, +3, +8, +5, -6")), 5);
+		Test.check(solver.evalPart2(toInput("+7, +7, -2, -7, -4")), 14);
 		// Vs Input
 		System.out.println(solver.evalPart2(lines));
 	}

@@ -174,8 +174,8 @@ How many steps does the packet need to go?
 				"     +B-+  +--+"
 		);
 		Result result = path(input);
-		Test.assertEqual(result.nodes, "ABCDEF");
-		Test.assertEqual(result.steps, 38);
+		Test.check(result.nodes, "ABCDEF");
+		Test.check(result.steps, 38);
 	}
 
 	public static void main(String[] args) throws Exception {

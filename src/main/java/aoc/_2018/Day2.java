@@ -133,7 +133,7 @@ fgij.)
 
 		// Part 1
 		// Examples
-		Test.assertEqual(solver.checksum(ImmutableList.of(
+		Test.check(solver.checksum(ImmutableList.of(
 				"abcdef", "bababc", "abbcde", "abcccd", "aabcdd", "abcdee", "ababab")),
 				12);
 		// Vs Input
@@ -141,7 +141,7 @@ fgij.)
 
 		// Part 2
 		// Examples
-		Test.assertEqual(solver.findCommon(ImmutableList.of(
+		Test.check(solver.findCommon(ImmutableList.of(
 				"abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz")),
 				"fgij");
 		// Vs Input

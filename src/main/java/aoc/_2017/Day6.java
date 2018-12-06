@@ -127,8 +127,8 @@ public class Day6 {
 	}
 
 	public void examples() {
-		Test.assertEqual(eval(ImmutableList.of(0, 2, 7, 0)).steps, 5);
-		Test.assertEqual(eval(ImmutableList.of(2, 4, 1, 2)).steps, 4);
+		Test.check(eval(ImmutableList.of(0, 2, 7, 0)).steps, 5);
+		Test.check(eval(ImmutableList.of(2, 4, 1, 2)).steps, 4);
 	}
 
 	public static void main(String[] args) throws Exception {

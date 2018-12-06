@@ -203,15 +203,15 @@ public class Day15 {
 	}
 
 	public void examples() {
-		Test.assertEqual(match(   1092455,  430625591), false);
-		Test.assertEqual(match(1181022009, 1233683848), false);
-		Test.assertEqual(match( 245556042, 1431495498), true);
-		Test.assertEqual(match(1744312007,  137874439), false);
-		Test.assertEqual(match(1352636452,  285222916), false);
+		Test.check(match(   1092455,  430625591), false);
+		Test.check(match(1181022009, 1233683848), false);
+		Test.check(match( 245556042, 1431495498), true);
+		Test.check(match(1744312007,  137874439), false);
+		Test.check(match(1352636452,  285222916), false);
 
-//		Test.assertEqual(partOne(65, 8921), 588);
+//		Test.check(partOne(65, 8921), 588);
 
-		Test.assertEqual(partTwo(65, 8921), 309);
+		Test.check(partTwo(65, 8921), 309);
 	}
 
 	public static void main(String[] args) {

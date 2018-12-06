@@ -81,12 +81,12 @@ public class Day11 {
 	}
 
 	public void examples() {
-		Test.assertEqual(distance("ne,ne,ne").finalDist, 3);
-		Test.assertEqual(distance("ne,ne,sw,sw").finalDist, 0);
-		Test.assertEqual(distance("ne,ne,s,s").finalDist, 2);
-		Test.assertEqual(distance("se,sw,se,sw,sw").finalDist, 3);
+		Test.check(distance("ne,ne,ne").finalDist, 3);
+		Test.check(distance("ne,ne,sw,sw").finalDist, 0);
+		Test.check(distance("ne,ne,s,s").finalDist, 2);
+		Test.check(distance("se,sw,se,sw,sw").finalDist, 3);
 
-		Test.assertEqual(distance("sw,se,sw,se,se").finalDist, 3);
+		Test.check(distance("sw,se,sw,se,se").finalDist, 3);
 	}
 
 	public static void main(String[] args) throws Exception {

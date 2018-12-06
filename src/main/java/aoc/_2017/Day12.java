@@ -121,8 +121,8 @@ public class Day12 {
 				"5 <-> 6",
 				"6 <-> 4, 5"
 		);
-		Test.assertEqual(part1(input), 6);
-		Test.assertEqual(part2(input), 2);
+		Test.check(part1(input), 6);
+		Test.check(part2(input), 2);
 	}
 
 	public static void main(String[] args) throws Exception {

@@ -31,16 +31,16 @@ public class Day1 {
 	}
 
 	public void examples() {
-		Test.assertEqual(evalPart1("1122"), 3);
-		Test.assertEqual(evalPart1("1111"), 4);
-		Test.assertEqual(evalPart1("1234"), 0);
-		Test.assertEqual(evalPart1("91212129"), 9);
+		Test.check(evalPart1("1122"), 3);
+		Test.check(evalPart1("1111"), 4);
+		Test.check(evalPart1("1234"), 0);
+		Test.check(evalPart1("91212129"), 9);
 
-		Test.assertEqual(evalPart2("1212"), 6);
-		Test.assertEqual(evalPart2("1221"), 0);
-		Test.assertEqual(evalPart2("123425"), 4);
-		Test.assertEqual(evalPart2("123123"), 12);
-		Test.assertEqual(evalPart2("12131415"), 4);
+		Test.check(evalPart2("1212"), 6);
+		Test.check(evalPart2("1221"), 0);
+		Test.check(evalPart2("123425"), 4);
+		Test.check(evalPart2("123123"), 12);
+		Test.check(evalPart2("12131415"), 4);
 	}
 
 	public static void main(String[] args) {

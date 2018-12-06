@@ -44,8 +44,8 @@ public class Day5 {
 
 	public void examples() {
 		List<String> example1 = ImmutableList.of("0", "3", "0", "1", "-3");
-		Test.assertEqual(eval(example1, this::modifierPart1), 5);
-		Test.assertEqual(eval(example1, this::modifierPart2), 10);
+		Test.check(eval(example1, this::modifierPart1), 5);
+		Test.check(eval(example1, this::modifierPart2), 10);
 	}
 
 	public static void main(String[] args) throws Exception {

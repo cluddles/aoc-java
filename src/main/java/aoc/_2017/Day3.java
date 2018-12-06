@@ -84,12 +84,12 @@ public class Day3 {
 		Data from square 23 is carried only 2 steps: up twice.
 		Data from square 1024 must be carried 31 steps.
 		 */
-		Test.assertEqual(evalPart1(1), 0);
-		Test.assertEqual(evalPart1(2), 1);  // extra
-		Test.assertEqual(evalPart1(11), 2); // extra
-		Test.assertEqual(evalPart1(12), 3);
-		Test.assertEqual(evalPart1(23), 2);
-		Test.assertEqual(evalPart1(1024), 31);
+		Test.check(evalPart1(1), 0);
+		Test.check(evalPart1(2), 1);  // extra
+		Test.check(evalPart1(11), 2); // extra
+		Test.check(evalPart1(12), 3);
+		Test.check(evalPart1(23), 2);
+		Test.check(evalPart1(1024), 31);
 
 		/*
 		Square 1 starts with the value 1.
@@ -98,12 +98,12 @@ public class Day3 {
 		Square 4 has all three of the aforementioned squares as neighbors and stores the sum of their values, 4.
 		Square 5 only has the first and fourth squares as neighbors, so it gets the value 5.
 		 */
-		Test.assertEqual(evalPart2(1, 0), 1);
-		Test.assertEqual(evalPart2(2, 0), 1);
-		Test.assertEqual(evalPart2(3, 0), 2);
-		Test.assertEqual(evalPart2(4, 0), 4);
-		Test.assertEqual(evalPart2(5, 0), 5);
-		Test.assertEqual(evalPart2(0, 312051), 312453); // solution
+		Test.check(evalPart2(1, 0), 1);
+		Test.check(evalPart2(2, 0), 1);
+		Test.check(evalPart2(3, 0), 2);
+		Test.check(evalPart2(4, 0), 4);
+		Test.check(evalPart2(5, 0), 5);
+		Test.check(evalPart2(0, 312051), 312453); // solution
 	}
 
 	public static void main(String[] args) {

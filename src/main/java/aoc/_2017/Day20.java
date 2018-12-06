@@ -166,7 +166,7 @@ How many particles are left after all collisions are resolved?
 				new Particle(1, new IntVector3(4,0,0), new IntVector3(0,0,0), new IntVector3(-2,0,0))
 		);
 		int closest = closestToOriginLongTerm(particles);
-		Test.assertEqual(closest, 0);
+		Test.check(closest, 0);
 
 		particles = ImmutableList.of(
 				new Particle(0, new IntVector3(-6,0,0), new IntVector3(3,0,0), new IntVector3(0,0,0)),
@@ -175,7 +175,7 @@ How many particles are left after all collisions are resolved?
 				new Particle(1, new IntVector3(-3,0,0), new IntVector3(-1,0,0), new IntVector3(0,0,0))
 		);
 		long remaining = collide(particles);
-		Test.assertEqual(remaining, 1L);
+		Test.check(remaining, 1L);
 	}
 
 

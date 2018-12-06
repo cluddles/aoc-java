@@ -1,12 +1,7 @@
 package aoc._2017;
 
-import com.google.common.collect.ImmutableList;
 import shared.Test;
 import shared.Timer;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @author Dan Fielding
@@ -135,7 +130,7 @@ public class Day17 {
 	}
 
 	public void examples() {
-		Test.assertEqual(partOne(3), 638);
+		Test.check(partOne(3), 638);
 	}
 
 	public static void main(String[] args) {

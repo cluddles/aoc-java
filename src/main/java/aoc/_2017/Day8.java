@@ -124,8 +124,8 @@ public class Day8 {
 				"c dec -10 if a >= 1",
 				"c inc -20 if c == 10"
 		));
-		Test.assertEqual(result.maxAtEnd, 1);
-		Test.assertEqual(result.maxDuring, 10);
+		Test.check(result.maxAtEnd, 1);
+		Test.check(result.maxDuring, 10);
 	}
 
 	public static void main(String[] args) throws Exception {

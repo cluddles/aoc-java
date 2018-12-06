@@ -247,13 +247,13 @@ public class Day10 {
 
 	public void examples() {
 		List<Integer> result = partOne(5, "3,4,1,5");
-		Test.assertEqual(result.get(0), 3);
-		Test.assertEqual(result.get(1), 4);
+		Test.check(result.get(0), 3);
+		Test.check(result.get(1), 4);
 
-		//Test.assertEqual(hash(""), "a2582a3a0e66e6e86e3812dcb672a272");
-		Test.assertEqual(hash("AoC 2017"), "33efeb34ea91902bb2f59c9920caa6cd");
-		Test.assertEqual(hash("1,2,3"), "3efbe78a8d82f29979031a4aa0b16a9d");
-		Test.assertEqual(hash("1,2,4"), "63960835bcdc130f0b66d7ff4f6a5a8e");
+		//Test.check(hash(""), "a2582a3a0e66e6e86e3812dcb672a272");
+		Test.check(hash("AoC 2017"), "33efeb34ea91902bb2f59c9920caa6cd");
+		Test.check(hash("1,2,3"), "3efbe78a8d82f29979031a4aa0b16a9d");
+		Test.check(hash("1,2,4"), "63960835bcdc130f0b66d7ff4f6a5a8e");
 	}
 
 	public static void main(String[] args) throws Exception {

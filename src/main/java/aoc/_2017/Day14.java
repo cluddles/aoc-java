@@ -153,8 +153,8 @@ public class Day14 {
 	}
 
 	public void examples() {
-		Test.assertEqual(countUsedBitsInGrid("flqrgnkx"), 8108);
-		Test.assertEqual(countRegions("flqrgnkx"), 1242);
+		Test.check(countUsedBitsInGrid("flqrgnkx"), 8108);
+		Test.check(countRegions("flqrgnkx"), 1242);
 	}
 
 	public static void main(String[] args) {

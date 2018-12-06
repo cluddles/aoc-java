@@ -284,7 +284,7 @@ public class Day18 {
 
 		PartOne partOne = new PartOne(lines);
 		partOne.executeAll();
-		Test.assertEqual(partOne.rcv, 4L);
+		Test.check(partOne.rcv, 4L);
 		System.out.println("Tests fine");
 	}
 

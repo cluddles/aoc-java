@@ -132,7 +132,7 @@ public class Day9 {
 	public int readGarbage(Buffer buffer) {
 		int removed = 0;
 		// Starts with <
-		Test.assertEqual(buffer.pop(), '<');
+		Test.check(buffer.pop(), '<');
 		while (true) {
 			switch (buffer.pop()) {
 			case '>':
@@ -151,7 +151,7 @@ public class Day9 {
 	public Group readGroup(Buffer buffer) {
 		Group result = new Group();
 		// Starts with {
-		Test.assertEqual(buffer.pop(), '{');
+		Test.check(buffer.pop(), '{');
 		while (true) {
 			switch (buffer.peek()) {
 			case '{':
@@ -195,14 +195,14 @@ public class Day9 {
 		- {{<!!>},{<!!>},{<!!>},{<!!>}}, score of 1 + 2 + 2 + 2 + 2 = 9.
 		- {{<a!>},{<a!>},{<a!>},{<ab>}}, score of 1 + 2 = 3.
 		*/
-		Test.assertEqual(groupScore("{}"), 1);
-		Test.assertEqual(groupScore("{{{}}}"), 6);
-		Test.assertEqual(groupScore("{{},{}}"), 5);
-		Test.assertEqual(groupScore("{{{},{},{{}}}}"), 16);
-		Test.assertEqual(groupScore("{<a>,<a>,<a>,<a>}"), 1);
-		Test.assertEqual(groupScore("{{<ab>},{<ab>},{<ab>},{<ab>}}"), 9);
-		Test.assertEqual(groupScore("{{<!!>},{<!!>},{<!!>},{<!!>}}"), 9);
-		Test.assertEqual(groupScore("{{<a!>},{<a!>},{<a!>},{<ab>}}"), 3);
+		Test.check(groupScore("{}"), 1);
+		Test.check(groupScore("{{{}}}"), 6);
+		Test.check(groupScore("{{},{}}"), 5);
+		Test.check(groupScore("{{{},{},{{}}}}"), 16);
+		Test.check(groupScore("{<a>,<a>,<a>,<a>}"), 1);
+		Test.check(groupScore("{{<ab>},{<ab>},{<ab>},{<ab>}}"), 9);
+		Test.check(groupScore("{{<!!>},{<!!>},{<!!>},{<!!>}}"), 9);
+		Test.check(groupScore("{{<a!>},{<a!>},{<a!>},{<ab>}}"), 3);
 
 		/*
 		- <>, 0 characters.
@@ -213,13 +213,13 @@ public class Day9 {
 		- <!!!>>, 0 characters.
 		- <{o"i!a,<{i<a>, 10 characters.
 		 */
-		Test.assertEqual(garbage("<>"), 0);
-		Test.assertEqual(garbage("<random characters>"), 17);
-		Test.assertEqual(garbage("<<<<>"), 3);
-		Test.assertEqual(garbage("<{!>}>"), 2);
-		Test.assertEqual(garbage("<!!>"), 0);
-		Test.assertEqual(garbage("<!!!>>"), 0);
-		Test.assertEqual(garbage("<{o\"i!a,<{i<a>"), 10);
+		Test.check(garbage("<>"), 0);
+		Test.check(garbage("<random characters>"), 17);
+		Test.check(garbage("<<<<>"), 3);
+		Test.check(garbage("<{!>}>"), 2);
+		Test.check(garbage("<!!>"), 0);
+		Test.check(garbage("<!!!>>"), 0);
+		Test.check(garbage("<{o\"i!a,<{i<a>"), 10);
 	}
 
 	public void main(String input) {

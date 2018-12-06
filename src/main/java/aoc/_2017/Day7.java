@@ -254,11 +254,11 @@ public class Day7 {
 				"gyxo (61)",
 				"cntj (57)");
 		Node root = processNodes(lines);
-		Test.assertEqual(root.name, "tknk");
+		Test.check(root.name, "tknk");
 
 		Unbalanced unbalanced = root.findUnbalanced();
-		Test.assertEqual(unbalanced.name, "ugml");
-		Test.assertEqual(unbalanced.newWeight, 60);
+		Test.check(unbalanced.name, "ugml");
+		Test.check(unbalanced.newWeight, 60);
 	}
 
 	public static void main(String[] args) throws Exception {

@@ -396,31 +396,31 @@ public class Day13 {
 	}
 
 	public void examples() {
-		Test.assertEqual(scannerPos(2, 0), 0);
-		Test.assertEqual(scannerPos(2, 1), 1);
-		Test.assertEqual(scannerPos(2, 2), 0);
+		Test.check(scannerPos(2, 0), 0);
+		Test.check(scannerPos(2, 1), 1);
+		Test.check(scannerPos(2, 2), 0);
 
-		Test.assertEqual(scannerPos(3, 0), 0);
-		Test.assertEqual(scannerPos(3, 1), 1);
-		Test.assertEqual(scannerPos(3, 2), 2);
-		Test.assertEqual(scannerPos(3, 3), 1);
-		Test.assertEqual(scannerPos(3, 4), 0);
+		Test.check(scannerPos(3, 0), 0);
+		Test.check(scannerPos(3, 1), 1);
+		Test.check(scannerPos(3, 2), 2);
+		Test.check(scannerPos(3, 3), 1);
+		Test.check(scannerPos(3, 4), 0);
 
-		Test.assertEqual(scannerPos(4, 0), 0);
-		Test.assertEqual(scannerPos(4, 1), 1);
-		Test.assertEqual(scannerPos(4, 2), 2);
-		Test.assertEqual(scannerPos(4, 3), 3);
-		Test.assertEqual(scannerPos(4, 4), 2);
-		Test.assertEqual(scannerPos(4, 5), 1);
-		Test.assertEqual(scannerPos(4, 6), 0);
+		Test.check(scannerPos(4, 0), 0);
+		Test.check(scannerPos(4, 1), 1);
+		Test.check(scannerPos(4, 2), 2);
+		Test.check(scannerPos(4, 3), 3);
+		Test.check(scannerPos(4, 4), 2);
+		Test.check(scannerPos(4, 5), 1);
+		Test.check(scannerPos(4, 6), 0);
 
 		List<String> input = ImmutableList.of(
 				"0: 3",
 				"1: 2",
 				"4: 4",
 				"6: 4");
-		Test.assertEqual(cost (input), 24);
-		Test.assertEqual(delay(input), 10);
+		Test.check(cost (input), 24);
+		Test.check(delay(input), 10);
 	}
 
 	public static void main(String[] args) throws Exception {

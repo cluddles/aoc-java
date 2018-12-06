@@ -110,7 +110,7 @@ public class Day16 {
 				"x3/4",
 				"pe/b"
 		);
-		Test.assertEqual(dance("abcde", input), "baedc");
+		Test.check(dance("abcde", input), "baedc");
 	}
 
 	public static void main(String[] args) throws Exception {
