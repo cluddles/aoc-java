@@ -19,5 +19,9 @@ public class Rect {
 		return size;
 	}
 
+	public long area() {
+		return (long) size.x * size.y;
+	}
+
 }
 
