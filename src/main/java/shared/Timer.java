@@ -15,8 +15,13 @@ public class Timer {
 		return (System.currentTimeMillis() - startTime);
 	}
 
+	public static void startMessage() {
+		System.out.println("----------");
+		start();
+	}
+
 	public static void endMessage() {
-		System.out.println("Done in " + end() + "ms");
+		System.out.println("-- Done in " + end() + "ms");
 	}
 
 }
