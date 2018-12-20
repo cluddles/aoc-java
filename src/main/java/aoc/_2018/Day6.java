@@ -2,7 +2,7 @@ package aoc._2018;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableList;
-import shared.Direction;
+import shared.Dir4;
 import shared.IntVector2;
 import shared.ResourceUtil;
 import shared.Test;
@@ -225,7 +225,7 @@ distance to all given coordinates of less than 10000?
 
 	private Collection<Tile> floodFill(Tile tile) {
 		List<Tile> modifiedTiles = new ArrayList<>();
-		for (Direction d : Direction.values()) {
+		for (Dir4 d : Dir4.values()) {
 			Tile t = pendingClaim(tile.pos.add(d.getStep()), tile.claimedBy);
 			if (t != null) modifiedTiles.add(t);
 		}
@@ -334,7 +334,7 @@ distance to all given coordinates of less than 10000?
 				}
 				// Expand
 				if (score < tile.lastScore || score < threshold) {
-					for (Direction d : Direction.values()) {
+					for (Dir4 d : Dir4.values()) {
 						Tile other = getTile(tile.pos.add(d.getStep()));
 						if (!answers.contains(other) && !rejects.contains(other)) {
 							other.lastScore = score;

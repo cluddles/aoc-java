@@ -1,13 +1,16 @@
 package shared;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.function.Function;
 
 /**
  * Simple two-dimensional grid structure.
  *
  * @author Dan Fielding
  */
-public class Grid<T> {
+public class Grid<T> implements Iterable<T> {
 
 	public static class GridCell<T> {
 		IntVector2 pos;
@@ -102,6 +105,47 @@ public class Grid<T> {
 	 */
 	public T set(int u, int v, T data) {
 		return getCell(u, v).setData(data);
+	}
+	public T set(IntVector2 pos, T data) {
+		return getCell(pos.x, pos.y).setData(data);
+	}
+
+	// Iterate top-left to bottom-right
+	public Iterator<GridCell<T>> cellIterator() {
+		return new Iterator<GridCell<T>>() {
+			private int x, y;
+			@Override public boolean hasNext() {
+				return x < numCells.getX() && y < numCells.getY();
+			}
+			@Override public GridCell<T> next() {
+				if (!isInBounds(x, y)) throw new NoSuchElementException(x + "," + y);
+				GridCell<T> result = getCell(x, y);
+				x++;
+				if (x >= numCells.getX()) { x = 0; y++; }
+				return result;
+			}
+		};
+	}
+
+	// Iterate top-left to bottom-right
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			private final Iterator<GridCell<T>> it = cellIterator();
+			@Override public boolean hasNext() { return it.hasNext(); }
+			@Override public T next()          { return it.next().getData();
+			}
+		};
+	}
+
+	public String dumpContents(Function<T, String> converter) {
+		StringBuilder sb = new StringBuilder();
+		for (int j = 0; j < numCells.getY(); j++) {
+			for (int i = 0; i < numCells.getX(); i++) {
+				sb.append(converter.apply(get(i, j)));
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 
 }

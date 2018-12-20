@@ -11,7 +11,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.TreeMultimap;
 
-import shared.Direction;
+import shared.Dir4;
 import shared.Md5;
 import shared.IntVector2;
 
@@ -58,10 +58,10 @@ public class Day17 {
 	}
 
 	private static class Move {
-		final Direction direction;
+		final Dir4 direction;
 		final String name;
 
-		public Move(Direction direction, String name) {
+		public Move(Dir4 direction, String name) {
 			this.direction = direction;
 			this.name = name;
 		}
@@ -76,10 +76,10 @@ public class Day17 {
 	}
 
 	private static final Move[] MOVES = new Move[] {
-			new Move(Direction.N, "U"),
-			new Move(Direction.S, "D"),
-			new Move(Direction.W, "L"),
-			new Move(Direction.E, "R"),
+			new Move(Dir4.N, "U"),
+			new Move(Dir4.S, "D"),
+			new Move(Dir4.W, "L"),
+			new Move(Dir4.E, "R"),
 	};
 
 	public void run(String seed) {

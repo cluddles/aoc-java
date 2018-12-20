@@ -1,14 +1,12 @@
 package aoc._2018;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.google.common.collect.Comparators;
-
-import shared.Direction;
+import shared.Dir4;
 import shared.Grid;
 import shared.IntVector2;
 import shared.ResourceUtil;
@@ -266,17 +264,23 @@ the only cart left?
 
 	static class Cart {
 		IntVector2 pos;
-		Direction  dir;
+		Dir4 dir;
 		int        junction;
 
-		Cart(IntVector2 pos, Direction dir) {
+		Cart(IntVector2 pos, Dir4 dir) {
 			this.pos = pos;
 			this.dir = dir;
+		}
+		IntVector2 getPos() {
+			return pos;
 		}
 	}
 
 	private Grid<Character> map;
 	private Set<Cart>       carts = new HashSet<>();
+
+	private static final Comparator<Cart> CART_ORDER = Comparator
+			.comparing(Cart::getPos, IntVector2.READING_ORDER);
 
 	Day13(List<String> lines) {
 		init(lines);
@@ -292,12 +296,12 @@ the only cart left?
 			for (int x = 0; x < line.length; x++) {
 				char c = line[x];
 				// Look for minecart, place track under it
-				Direction dir = null;
+				Dir4 dir = null;
 				switch (c) {
-				case '<': c = '-'; dir = Direction.W; break;
-				case '>': c = '-'; dir = Direction.E; break;
-				case '^': c = '|'; dir = Direction.N; break;
-				case 'v': c = '|'; dir = Direction.S; break;
+				case '<': c = '-'; dir = Dir4.W; break;
+				case '>': c = '-'; dir = Dir4.E; break;
+				case '^': c = '|'; dir = Dir4.N; break;
+				case 'v': c = '|'; dir = Dir4.S; break;
 				}
 				if (dir != null) {
 					// New cart
@@ -312,10 +316,7 @@ the only cart left?
 	private IntVector2 tick() {
 		// Move carts, top-left first
 		List<Cart> moveOrder = carts.stream()
-				.sorted((c1, c2) -> {
-						if (c1.pos.y != c2.pos.y) return c1.pos.y - c2.pos.y;
-						return c1.pos.x - c2.pos.x;
-				})
+				.sorted(CART_ORDER)
 				.collect(Collectors.toList());
 		IntVector2 collisionPos = null;
 		for (Cart cart : moveOrder) {
@@ -340,22 +341,22 @@ the only cart left?
 		return collisionPos;
 	}
 
-	private Direction cartDir(Cart cart) {
+	private Dir4 cartDir(Cart cart) {
 		Character c   = map.get(cart.pos);
-		Direction dir = cart.dir;
+		Dir4 dir = cart.dir;
 		switch (c) {
 		case '/':
-			if (cart.dir == Direction.N || cart.dir == Direction.S) return dir.turnRight();
-			return dir.turnLeft();
+			if (cart.dir == Dir4.N || cart.dir == Dir4.S) return dir.rotateClockwise();
+			return dir.rotateAntiClockwise();
 		case '\\':
-			if (cart.dir == Direction.N || cart.dir == Direction.S) return dir.turnLeft();
-			return dir.turnRight();
+			if (cart.dir == Dir4.N || cart.dir == Dir4.S) return dir.rotateAntiClockwise();
+			return dir.rotateClockwise();
 		case '+':
 			int i = cart.junction;
 			cart.junction = (i + 1) % 3;
 			switch (i) {
-			case 0:  return dir.turnLeft();
-			case 2:  return dir.turnRight();
+			case 0:  return dir.rotateAntiClockwise();
+			case 2:  return dir.rotateClockwise();
 			default: return dir;
 			}
 		default:

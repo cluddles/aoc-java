@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
-import shared.Direction;
+import shared.Dir4;
 import shared.Grid;
 import shared.IntVector2;
 import shared.ResourceUtil;
@@ -125,7 +125,7 @@ How many steps does the packet need to go?
 	public Result path(List<String> input) {
 		Grid<Node> grid = createGrid(input);
 
-		Direction dir = Direction.S;
+		Dir4 dir = Dir4.S;
 		// Find start pos
 		IntVector2 pos = null;
 		for (int i = 0; i < grid.getNumCells().x; i++) {
@@ -154,7 +154,7 @@ How many steps does the packet need to go?
 			// If cross encountered, determine new direction
 			if (node.c == '+') {
 				// check rotate left, right and use whichever isn't blank/out of bounds
-				dir = dir.turnLeft();
+				dir = dir.rotateAntiClockwise();
 				if (!checkValid(grid, pos.add(dir.getStep()))) {
 					dir = dir.opposite();
 				}

@@ -1,5 +1,7 @@
 package shared;
 
+import java.util.Comparator;
+
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
@@ -8,7 +10,12 @@ import com.google.common.base.Objects;
  */
 public class IntVector2 {
 
+	public static final Comparator<IntVector2> READING_ORDER = Comparator
+			.comparing(IntVector2::getY)
+			.thenComparing(IntVector2::getX);
+
 	public static final IntVector2 ZERO = new IntVector2(0, 0);
+	public static final IntVector2 ONE  = new IntVector2(1, 1);
 
 	public final int x, y;
 
@@ -19,6 +26,9 @@ public class IntVector2 {
 
 	public IntVector2 add(IntVector2 other) {
 		return new IntVector2(x + other.x, y + other.y);
+	}
+	public IntVector2 subtract(IntVector2 other) {
+		return new IntVector2(x - other.x, y - other.y);
 	}
 
 	@Override
