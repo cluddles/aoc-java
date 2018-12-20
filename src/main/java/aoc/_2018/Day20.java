@@ -3,7 +3,6 @@ package aoc._2018;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -212,22 +211,21 @@ What is the largest number of doors you would be required to pass through to
 reach a room? That is, find the room for which the shortest path from your
 starting location to that room would require passing through the most doors;
 what is the fewest doors you can pass through to reach it?
- */
 
-	enum WallState {
-		WALL,
-		DOOR,
-		UNKNOWN,
-	}
+--- Part Two ---
+
+Okay, so the facility is big.
+
+How many rooms have a shortest path from your current location that pass through
+at least 1000 doors?
+
+ */
 
 	static class Room {
 		final IntVector2 pos;
-		Map<Dir4, WallState> walls = new EnumMap<>(Dir4.class);
+		Set<Dir4> doors = new HashSet<>();
 		Room(IntVector2 pos) {
 			this.pos = pos;
-			for (Dir4 d : Dir4.values()) {
-				walls.put(d, WallState.UNKNOWN);
-			}
 		}
 	}
 
@@ -243,6 +241,7 @@ what is the fewest doors you can pass through to reach it?
 		Permutation next(IntVector2 newPos) {
 			return new Permutation(newPos, index+1, new LinkedList<>(braces));
 		}
+		// equals/hashcode ignore braces, but that's fine
 		@Override public boolean equals(Object o) {
 			if (this == o) return true;
 			if (o == null || getClass() != o.getClass()) return false;
@@ -276,8 +275,15 @@ what is the fewest doors you can pass through to reach it?
 	}
 
 	void init(String input) {
+		regexPathing(input);
+		// System.out.println(rooms.size());
+		// System.out.println(rooms);
+	}
+
+	private void regexPathing(String input) {
 		// Track all current states
 		Set<Permutation> permutations = new HashSet<>();
+		Set<Permutation> done         = new HashSet<>();
 		permutations.add(new Permutation(IntVector2.ZERO, 0, new LinkedList<>()));
 		while (!permutations.isEmpty()) {
 			// Order shouldn't matter, but let's be consistent
@@ -285,14 +291,15 @@ what is the fewest doors you can pass through to reach it?
 					.max(PERMUTATION_COMPARATOR)
 					.orElseThrow(() -> new IllegalStateException("No permutation"));
 			permutations.remove(permutation);
+			done        .add   (permutation);
 			IntVector2 pos = permutation.pos;
 			int        i   = permutation.index;
 			char       c   = input.charAt(i);
-			System.out.println(i + " " + c + " " + pos);
+			// System.out.println(permutations.size() + ":" + i + ":" + c + ":" + pos + ":" + rooms.size());
 			switch (c) {
 			case '^':
 				// Start
-				permutations.add(permutation.next(pos));
+				addPermutation(permutations, done, permutation.next(pos));
 				break;
 
 			case '$':
@@ -306,13 +313,13 @@ what is the fewest doors you can pass through to reach it?
 				// It's a move
 				Dir4 dir = Dir4.valueOf(String.valueOf(c));
 				pos = move(pos, dir);
-				permutations.add(permutation.next(pos));
+				addPermutation(permutations, done, permutation.next(pos));
 				break;
 
 			case '(':
 				// Init new brace state
 				permutation.braces.push(new BraceState(pos));
-				permutations.add(permutation.next(pos));
+				addPermutation(permutations, done, permutation.next(pos));
 				break;
 
 			case '|': {
@@ -320,7 +327,7 @@ what is the fewest doors you can pass through to reach it?
 				BraceState state = permutation.braces.peek();
 				state.ends.add(pos);
 				pos = state.start;
-				permutations.add(permutation.next(pos));
+				addPermutation(permutations, done, permutation.next(pos));
 				break;
 			}
 
@@ -329,7 +336,7 @@ what is the fewest doors you can pass through to reach it?
 				BraceState state = permutation.braces.pop();
 				state.ends.add(pos);
 				for (IntVector2 p : state.ends) {
-					permutations.add(permutation.next(p));
+					addPermutation(permutations, done, permutation.next(p));
 				}
 				break;
 			}
@@ -338,31 +345,70 @@ what is the fewest doors you can pass through to reach it?
 				break;
 			}
 		}
-		System.out.println(rooms);
+	}
+
+	void addPermutation(Set<Permutation> permutations, Set<Permutation> done, Permutation permutation) {
+		if (done.contains(permutation)) return;
+		permutations.add(permutation);
 	}
 
 	IntVector2 move(IntVector2 pos, Dir4 dir) {
 		IntVector2 newPos = pos.add(dir.getStep());
 		Room from = rooms.computeIfAbsent(pos,    Room::new);
 		Room to   = rooms.computeIfAbsent(newPos, Room::new);
-		from.walls.put(dir,            WallState.DOOR);
-		to  .walls.put(dir.opposite(), WallState.DOOR);
+		from.doors.add(dir);
+		to  .doors.add(dir.opposite());
 		return newPos;
 	}
 
 	public int evalPart1() {
-		return 0;
+		// Flood fill will do
+		Map<Room, Integer> costs = new HashMap<>();
+		return fillPart1(costs, IntVector2.ZERO, 0);
+	}
+	private int fillPart1(Map<Room, Integer> costs, IntVector2 pos, int cost) {
+		int result = 0;
+		Room room = rooms.get(pos);
+		if (!costs.containsKey(room)) {
+			result = cost;
+			costs.put(room, cost);
+			for (Dir4 dir : Dir4.values()) {
+				if (room.doors.contains(dir)) {
+					result = Math.max(result, fillPart1(costs, pos.add(dir.getStep()), cost + 1));
+				}
+			}
+		}
+		return result;
+	}
+
+	public int evalPart2() {
+		Map<Room, Integer> costs = new HashMap<>();
+		return fillPart2(costs, IntVector2.ZERO, 0);
+	}
+	private int fillPart2(Map<Room, Integer> costs, IntVector2 pos, int cost) {
+		int result = 0;
+		Room room = rooms.get(pos);
+		if (!costs.containsKey(room)) {
+			if (cost >= 1000) result++;
+			costs.put(room, cost);
+			for (Dir4 dir : Dir4.values()) {
+				if (room.doors.contains(dir)) {
+					result += fillPart2(costs, pos.add(dir.getStep()), cost + 1);
+				}
+			}
+		}
+		return result;
 	}
 
 	public static void main(String[] args) throws Exception {
 		String               input    = ResourceUtil.readString("2018/day20.input");
 		Map<String, Integer> examples = ImmutableMap
 				.<String, Integer>builder()
-//				.put("^WNE$", 3)
+				.put("^WNE$", 3)
 				.put("^ENWWW(NEEE|SSE(EE|N))$", 10)
-//				.put("^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$", 18)
-//				.put("^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$", 23)
-//				.put("^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$", 31)
+				.put("^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$", 18)
+				.put("^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$", 23)
+				.put("^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$", 31)
 				.build();
 
 		// Part 1
@@ -370,5 +416,11 @@ what is the fewest doors you can pass through to reach it?
 		for (Map.Entry<String, Integer> entry : examples.entrySet()) {
 			Test.check(new Day20(entry.getKey()).evalPart1(), entry.getValue());
 		}
+		// Vs Input
+		System.out.println(new Day20(input).evalPart1());
+
+		// Part 2
+		// Vs Input
+		System.out.println(new Day20(input).evalPart2());
 	}
 }
