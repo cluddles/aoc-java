@@ -2,6 +2,7 @@ package shared;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
@@ -53,6 +54,29 @@ public class Grid<T> implements Iterable<T> {
 			}
 			cells.add(col);
 		}
+	}
+
+	/**
+	 * Generate grid from multi-line string input. Assumes all lines are the
+	 * same length - will explode if they're not.
+	 *
+	 * @param lines
+	 * 		Lines to parse.
+	 *
+	 * @return Generated grid.
+	 */
+	public static Grid<Character> fromLines(List<String> lines) {
+		int w = lines.iterator().next().length();
+		int h = lines.size();
+		Grid<Character> result = new Grid<>(w, h);
+		int j = 0;
+		for (String line : lines) {
+			for (int i = 0; i < w; i++) {
+				result.set(i, j, line.charAt(i));
+			}
+			j++;
+		}
+		return result;
 	}
 
 	/** @return Number of cells in each axis within the grid */

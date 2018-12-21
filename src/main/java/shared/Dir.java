@@ -1,5 +1,8 @@
 package shared;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author Dan Fielding
  */
@@ -32,6 +35,12 @@ public interface Dir<T extends Dir> {
 	}
 	default int getY() {
 		return getStep().getY();
+	}
+
+	static <T extends Dir> Set<IntVector2> adjacentPositions(IntVector2 pos, T[] values) {
+		Set<IntVector2> result = new HashSet<>();
+		for (T d : values) { result.add(pos.add(d.getStep())); }
+		return result;
 	}
 
 }

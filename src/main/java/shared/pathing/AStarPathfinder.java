@@ -37,7 +37,7 @@ public class AStarPathfinder<T> {
 					.min(Comparator.comparingInt(n -> fScores.getOrDefault(n, Integer.MAX_VALUE)))
 					.orElseThrow(() -> new IllegalStateException("No nodes"));
 			if (current.equals(end)) {
-				return reconstructPath(cameFrom, current);
+				return reconstructPath(cameFrom, current, gScores.get(end));
 			}
 
 			openSet.remove(current);
@@ -67,14 +67,14 @@ public class AStarPathfinder<T> {
 		return null;
 	}
 
-	private Path<T> reconstructPath(Map<T, T> cameFrom, T current) {
+	private Path<T> reconstructPath(Map<T, T> cameFrom, T current, int cost) {
 		T destination = current;
 		List<T> steps = new LinkedList<>();
 		while (current != null) {
 			steps.add(0, current);
 			current = cameFrom.get(current);
 		}
-		return new Path<>(destination, steps);
+		return new Path<>(destination, steps, cost);
 	}
 
 }

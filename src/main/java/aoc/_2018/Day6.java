@@ -1,15 +1,23 @@
 package aoc._2018;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableList;
+
 import shared.Dir4;
 import shared.IntVector2;
 import shared.ResourceUtil;
 import shared.Test;
-
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author Dan Fielding

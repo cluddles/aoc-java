@@ -1,14 +1,19 @@
 package aoc._2018;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.google.common.collect.ImmutableList;
+
 import shared.IntVector2;
 import shared.Rect;
 import shared.ResourceUtil;
 import shared.Test;
-
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author Dan Fielding

@@ -3,6 +3,7 @@ package aoc._2018;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Deque;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -221,14 +222,16 @@ at least 1000 doors?
 
  */
 
+	// No doors until otherwise informed
 	static class Room {
 		final IntVector2 pos;
-		Set<Dir4> doors = new HashSet<>();
+		Set<Dir4> doors = EnumSet.noneOf(Dir4.class);
 		Room(IntVector2 pos) {
 			this.pos = pos;
 		}
 	}
 
+	// Track all the current permutations to expand
 	static class Permutation {
 		final IntVector2        pos;
 		final int               index;
@@ -241,7 +244,9 @@ at least 1000 doors?
 		Permutation next(IntVector2 newPos) {
 			return new Permutation(newPos, index+1, new LinkedList<>(braces));
 		}
-		// equals/hashcode ignore braces, but that's fine
+		// equals/hashcode ignore braces, but that's fine - two permutations
+		// at the same position for the same index shouldn't ever have different
+		// brace states.
 		@Override public boolean equals(Object o) {
 			if (this == o) return true;
 			if (o == null || getClass() != o.getClass()) return false;
@@ -256,6 +261,7 @@ at least 1000 doors?
 		public int        getIndex() { return index; }
 	}
 
+	// Track start position and end positions generated within a (...) section
 	static class BraceState {
 		final IntVector2 start;
 		List<IntVector2> ends  = new ArrayList<>();
@@ -276,10 +282,9 @@ at least 1000 doors?
 
 	void init(String input) {
 		regexPathing(input);
-		// System.out.println(rooms.size());
-		// System.out.println(rooms);
 	}
 
+	// Traverse the regex and generate rooms
 	private void regexPathing(String input) {
 		// Track all current states
 		Set<Permutation> permutations = new HashSet<>();
@@ -348,10 +353,12 @@ at least 1000 doors?
 	}
 
 	void addPermutation(Set<Permutation> permutations, Set<Permutation> done, Permutation permutation) {
+		// Don't add a permutation we've already seen
 		if (done.contains(permutation)) return;
 		permutations.add(permutation);
 	}
 
+	// Move in given direction and create rooms/doors as appropriate.
 	IntVector2 move(IntVector2 pos, Dir4 dir) {
 		IntVector2 newPos = pos.add(dir.getStep());
 		Room from = rooms.computeIfAbsent(pos,    Room::new);
@@ -367,6 +374,7 @@ at least 1000 doors?
 		return fillPart1(costs, IntVector2.ZERO, 0);
 	}
 	private int fillPart1(Map<Room, Integer> costs, IntVector2 pos, int cost) {
+		// Max cost of this and any recursive calls
 		int result = 0;
 		Room room = rooms.get(pos);
 		if (!costs.containsKey(room)) {
@@ -386,9 +394,11 @@ at least 1000 doors?
 		return fillPart2(costs, IntVector2.ZERO, 0);
 	}
 	private int fillPart2(Map<Room, Integer> costs, IntVector2 pos, int cost) {
+		// Sum of this and recursive calls
 		int result = 0;
 		Room room = rooms.get(pos);
 		if (!costs.containsKey(room)) {
+			// Only care about rooms 1000 steps or more away from start
 			if (cost >= 1000) result++;
 			costs.put(room, cost);
 			for (Dir4 dir : Dir4.values()) {

@@ -1,11 +1,9 @@
 package aoc._2018;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import aoc._2018.common.Processor;
 import aoc._2018.common.ProcessorState;
+import aoc._2018.common.Program;
 import shared.ResourceUtil;
 
 /**
@@ -122,65 +120,11 @@ What value is left in register 0 when this new background process halts?
 
 	private static final int NUM_REGISTERS = 6;
 
-	static class Instruction {
-		final String opName;
-		final int a;
-		final int b;
-		final int c;
-		Instruction(String opName, int a, int b, int c) {
-			this.opName = opName;
-			this.a = a;
-			this.b = b;
-			this.c = c;
-		}
-		@Override public String toString() {
-			return opName + " " + a + " " + b + " " + c;
-		}
-	}
-
-	static class Program {
-		final int ipIndex;
-		final List<Instruction> instructions;
-		Program(int ipIndex, List<Instruction> instructions) {
-			this.ipIndex = ipIndex;
-			this.instructions = instructions;
-		}
-	}
-
-	Program parseProgram(List<String> lines) {
-		Iterator<String> it = lines.iterator();
-		// Of the form "#ip X"
-		int ip = Integer.parseInt(it.next().split(" ")[1]);
-		List<Instruction> instructions = new ArrayList<>();
-		while (it.hasNext()) {
-			String line = it.next();
-			String[] split = line.split(" ");
-			instructions.add(new Instruction(
-					split[0],
-					Integer.parseInt(split[1]),
-					Integer.parseInt(split[2]),
-					Integer.parseInt(split[3])
-			));
-		}
-		return new Program(ip, instructions);
-	}
-
-	ProcessorState eval(List<String> lines) {
+	public ProcessorState eval(List<String> lines) {
 		return eval(lines, new ProcessorState(NUM_REGISTERS));
 	}
-	ProcessorState eval(List<String> lines, ProcessorState state) {
-		Program   program   = parseProgram(lines);
-		Processor processor = new Processor(state);
-
-		int ip = 0;
-		while (ip >= 0 && ip < program.instructions.size()) {
-			state.set(program.ipIndex, ip);
-			Instruction instruction = program.instructions.get(ip);
-			processor.eval(instruction.opName, instruction.a, instruction.b, instruction.c);
-			ip = state.get(program.ipIndex);
-			ip++;
-		}
-		return state;
+	public ProcessorState eval(List<String> lines, ProcessorState state) {
+		return Program.fromInput(lines).execute(state);
 	}
 
 	public int evalPart1(List<String> lines) {
@@ -261,8 +205,8 @@ the whole loop exits when reg4 > reg3
 	}
 
 	public static void main(String[] args) throws Exception {
-		List<String> example = ResourceUtil.readAllLines("2018/day19.example");
-		List<String> input   = ResourceUtil.readAllLines("2018/day19.input");
+//		List<String> example = ResourceUtil.readAllLines("2018/day19.example");
+//		List<String> input   = ResourceUtil.readAllLines("2018/day19.input");
 
 		// Part 1
 		// Example

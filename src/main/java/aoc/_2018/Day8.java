@@ -1,11 +1,11 @@
 package aoc._2018;
 
-import shared.ResourceUtil;
-import shared.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import shared.ResourceUtil;
+import shared.Test;
 
 /**
  * @author Dan Fielding

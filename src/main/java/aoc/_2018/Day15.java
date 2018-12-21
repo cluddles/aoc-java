@@ -9,14 +9,15 @@ import java.util.stream.Collectors;
 
 import com.google.common.collect.ImmutableList;
 
-import shared.pathing.AStarPathfinder;
-import shared.pathing.AStarApplication;
+import shared.Dir;
 import shared.Dir4;
 import shared.Grid;
 import shared.IntVector2;
-import shared.pathing.Path;
 import shared.ResourceUtil;
 import shared.Test;
+import shared.pathing.AStarApplication;
+import shared.pathing.AStarPathfinder;
+import shared.pathing.Path;
 
 /**
  * @author Dan Fielding
@@ -600,13 +601,8 @@ your puzzle input?
 	}
 
 	Set<IntVector2> allAdjacentPositions(IntVector2 pos) {
-		Set<IntVector2> result = new HashSet<>();
-		for (Dir4 d : Dir4.values()) {
-			result.add(pos.add(d.getStep()));
-		}
-		return result;
+		return Dir.adjacentPositions(pos, Dir4.values());
 	}
-
 
 	void moveUnit(Unit unit, IntVector2 to) {
 		// Remove obstruction from tile grid

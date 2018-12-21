@@ -215,17 +215,7 @@ What will the total resource value of the lumber collection area be after
 	}
 
 	State parse(List<String> lines) {
-		int w = lines.iterator().next().length();
-		int h = lines.size();
-		Grid<Character> tiles = new Grid<>(w, h);
-		int j = 0;
-		for (String line : lines) {
-			for (int i = 0; i < w; i++) {
-				tiles.set(i, j, line.charAt(i));
-			}
-			j++;
-		}
-		return new State(tiles);
+		return new State(Grid.fromLines(lines));
 	}
 
 	void dumpState(State state) {

@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import shared.HexUtil;
 import shared.HexDirection;
+import shared.HexUtil;
 import shared.IntVector3;
 import shared.ResourceUtil;
 import shared.Test;

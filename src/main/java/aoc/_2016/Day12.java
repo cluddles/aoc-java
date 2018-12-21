@@ -13,6 +13,8 @@ import shared.ResourceUtil;
  */
 public class Day12 {
 
+	// TODO refactor to use Assembunny class
+
 	private void parseFile(String filename) throws IOException {
 		List<String> lines = new ArrayList<>();
 		lines.addAll(ResourceUtil.readAllLines(filename));

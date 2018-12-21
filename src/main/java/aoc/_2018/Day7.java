@@ -1,12 +1,19 @@
 package aoc._2018;
 
-import com.google.common.collect.ImmutableList;
-import shared.ResourceUtil;
-import shared.Test;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.collect.ImmutableList;
+
+import shared.ResourceUtil;
+import shared.Test;
 
 /**
  * @author Dan Fielding

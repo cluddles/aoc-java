@@ -1,13 +1,14 @@
 package aoc._2017;
 
-import com.google.common.collect.ImmutableList;
-import shared.ResourceUtil;
-import shared.Test;
-import shared.Timer;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.google.common.collect.ImmutableList;
+
+import shared.ResourceUtil;
+import shared.Test;
+import shared.Timer;
 
 /**
  * @author Dan Fielding

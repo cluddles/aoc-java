@@ -1,10 +1,10 @@
 package aoc._2017;
 
-import shared.ResourceUtil;
-import shared.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import shared.ResourceUtil;
+import shared.Test;
 
 /**
  * @author Dan Fielding

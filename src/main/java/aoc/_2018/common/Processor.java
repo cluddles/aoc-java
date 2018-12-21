@@ -6,7 +6,7 @@ import java.util.function.BiFunction;
 import com.google.common.collect.ImmutableMap;
 
 /**
- * Processor used by Day16 and Day19.
+ * Processor used by Day16, Day19, Day21.
  *
  * @author Dan Fielding
  */

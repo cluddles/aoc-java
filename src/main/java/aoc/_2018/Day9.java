@@ -1,13 +1,15 @@
 package aoc._2018;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableMap;
-import shared.ResourceUtil;
-import shared.Test;
-
-import java.util.*;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableMap;
+
+import shared.ResourceUtil;
+import shared.Test;
 
 /**
  * @author Dan Fielding

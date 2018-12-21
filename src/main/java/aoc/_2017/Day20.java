@@ -1,19 +1,20 @@
 package aoc._2017;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Multimap;
-import shared.IntVector3;
-import shared.ResourceUtil;
-import shared.Test;
-import shared.Timer;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Multimap;
+
+import shared.IntVector3;
+import shared.ResourceUtil;
+import shared.Test;
+import shared.Timer;
 
 /**
  * @author Dan Fielding

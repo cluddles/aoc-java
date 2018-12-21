@@ -12,8 +12,8 @@ import com.google.common.collect.Ordering;
 import com.google.common.collect.TreeMultimap;
 
 import shared.Dir4;
-import shared.Md5;
 import shared.IntVector2;
+import shared.Md5;
 
 /**
  * @author Dan Fielding
